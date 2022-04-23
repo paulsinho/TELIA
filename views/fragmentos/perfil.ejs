@@ -1,0 +1,117 @@
+<!-- Start Align Area -->
+<div class="whole-wrap">
+    <div class="container">
+        <div class="section-top-border">
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mt-sm-30 text-center">
+                    <form id='fomr_Registro' method='POST' action='/actualizarfotoUsuario'
+                          enctype="multipart/form-data">
+                        <input type="hidden" name="externalX" value="<%- per.external_id %>" />
+                        <input type="hidden" name="rol" value="<%- per.rol %>" />
+                        <div class="single-element-widget">
+                            <h3 class="mb-30"><%- per.nombre %> <%- per.apellido %></h3>
+                            <div class="text-center">
+                                <img src="<%- per.foto %>" class="avatar img-circle img-thumbnail" alt="avatar">
+                                <h6>Actualizar foto</h6>
+                                <input type="file" id="archivo" name="archivo"
+                                       class="text-center center-block file-upload foto">
+                            </div>
+                            <div class="mt-10 btnF" style="display:none">
+                                <button class="btn btn-outline-dark">Actualizar Foto</button>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="mt-10 btnF" style="display:none">
+                        <button class="btn btn-outline-dark">Cancelar</button>
+                    </div>
+                </div>
+                <div class="col-lg-8 col-md-6">
+                    <% if(rol === 1){ %>
+                    <h3 class="mb-30">Mis Datos</h3>
+                    <% } else{ %>
+                    <h3 class="mb-30">Mis Datos <span class="uppercase">(admin <%- rolN %>)</span></h3>
+                    <% } %>
+
+                    <% if(rol === 1){ %>
+                    <form id='fomr_Registro' method='POST' action='/actualizarUsuario'>
+                        <% } else{ %>
+                        <form id='fomr_RegistroX' method='POST' action='/actualizarActor'>
+                            <% } %>
+                            <input type="hidden" name="external" value="<%-per.external_id %>" />
+                            <input type="hidden" name="person" value="<%-per.idPersona %>" />
+                            <div class="mt-10">
+                                <input type="text" name="cedula" placeholder="Cedula" value="<%- per.cedula %>"
+                                       onfocus="this.placeholder = ''" onblur="this.placeholder = 'Cedula'" required
+                                       class="single-input">
+                            </div>
+                            <div class="mt-10">
+                                <input type="text" name="nombre" placeholder="Nombre" value="<%- per.nombre %>"
+                                       onfocus=this.placeholder = ''"
+                                       onblur=" this.placeholder = 'Nombre'" required class=" single-input">
+                            </div>
+                            <div class="mt-10">
+                                <input type="text" name="apellido" placeholder="Apellido" value="<%- per.apellido %>"
+                                       onfocus="this.placeholder = ''" onblur="this.placeholder = 'Apellido'" required
+                                       class="single-input">
+                            </div>
+                            <% if(rol != 1){ %>
+                            <div class="mt-10">
+                                <textarea class="single-textarea" name="descripcion" placeholder="Descripcion"
+                                          onfocus="this.placeholder = ''" onblur="this.placeholder = 'Descripcion'"
+                                          required><%- actor.desActor %></textarea>
+                            </div>
+                            <% } %>
+                            <div class="mt-10">
+                                <span>Fecha de Nacimiento</span>
+                                <input type="date" name="fechaNac" placeholder="Fecha de Nacimiento"
+                                       value="<%- per.fecha_Nac %>" onfocus="this.placeholder = 'Fecha de Nacimiento'"
+                                       onblur="this.placeholder = 'Fecha de Nacimiento'" required class="single-input">
+                            </div>
+                            <div class="mt-10">
+                                <input type="text" name="direccion" placeholder="Direccion" value="<%- per.direccion %>"
+                                       onfocus="this.placeholder = ''" onblur="this.placeholder = 'Direccion'" required
+                                       class="single-input">
+                            </div>
+                            <div class="mt-10">
+                                <input type="text" name="telefono" placeholder="Telefono" value="<%- per.telefono %>"
+                                       onfocus="this.placeholder = ''" onblur="this.placeholder = 'Telefono'" required
+                                       class="single-input">
+                            </div>
+                            <div class="mt-10">
+                                <button class="btn btn-outline-dark">Actualizar mis Datos</button>
+                            </div>
+                        </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Align Area -->
+
+
+<!-- Script -->
+<script>
+    $(document).ready(function () {
+        var readURL = function (input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('.avatar').attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+        $(".file-upload").on('change', function () {
+            readURL(this);
+        });
+        $('.foto').click(function () {
+            $('.btnF').css("display", "block");
+        });
+
+        $('.btnF').click(function () {
+            $('.btnF').css("display", "none");
+        });
+    });
+</script>

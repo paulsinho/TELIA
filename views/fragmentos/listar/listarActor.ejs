@@ -1,0 +1,62 @@
+<div class="whole-wrap">
+    <div class="container">
+        <div class="section-top-border">
+            <div class="row">
+                <div class="col-lg-8 col-md-8">
+                    <h3 class="mb-30">Nuestos Actores</h3>
+                    <div class="progress-table-wrapy">
+                        <table class="table table-hover table-fixed">
+                            <!--Table head-->
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Nombre</th>
+                                    <th>Edad</th>
+                                    <% if( rol != 1){ %>
+                                    <th>Accion</th>
+                                    <% } %>
+                                </tr>
+                            </thead>
+                            <!--Table head-->
+                            <!--Table body-->
+                            <tbody>
+                                <% lista.forEach(function(actorT,i){ %>
+                                <tr id="<%= i%>">
+                                    <th scope="row"><%- (i+1) -%></th>
+                                    <td><%- actorT.nombre -%> <%- actorT.apellido -%></td>
+                                    <td><%- actorT.fecha_Nac -%></td>
+                                    <% if( rol != 1){ %>
+                                    <td><a href="/editarActor/<%= actorT.external_id %>"
+                                            class="genric-btn primary-border small">Editar</a></td>
+                                    <% } %>
+                                </tr>
+                                <script>
+                                    var html = '';
+                                    $('#<%= i%>').hover(function () {
+                                        html = '<h3 class="mb-30" id="nombreActor"></h3><div class="switch-wrap d-flex justify-content-between  text-center">';
+                                        html += '<div class="section-ga" id="FotoX"></div></div><div class="switch-wrap d-flex justify-content-between"><div class="col-lg-11 about-left" id="DatoX"></div></div>';
+                                        $('#padre').empty();
+                                        $('#padre').html(html);
+                                        $('#FotoX').css('background-image', 'url(<%= actorT.foto%>)');
+                                        $('#FotoX').css('background-size', 'cover');
+                                        $('#FotoX').css('background-position', 'center center');
+
+                                        $('#DatoX').html('<p><%- actorT.desActor -%></p>');
+                                        $('#nombreActor').text('<%= actorT.nombre %>');
+                                    });
+                                </script>
+                                <% }); %>
+                            </tbody>
+                            <!--Table body-->
+                        </table>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-5 mt-sm-30" id="xx">
+                    <div id='padre' class="single-element-widget">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

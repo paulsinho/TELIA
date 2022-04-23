@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My REST API Documentation</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+  <link rel="stylesheet" href="api-doc-generator.min.css">
+</head>
+<body>
+  <main>
+    <nav class="navigation">
+      <section class="container">
+        <div class="row">
+          <div class="column">
+            <div class="title">My REST API Documentation</div>
+          </div>
+        </div>
+      </section>
+    </nav>
+
+    <section class="container">
+      <div class="row">
+        <div class="column">
+          <div class="sections">
+            <ul>
+              <li>
+                <a href="#Actor">Actor</a>
+              </li>
+              <li>
+                <a href="#Correo">Correo</a>
+              </li>
+              <li>
+                <a href="#Cuenta">Cuenta</a>
+              </li>
+              <li>
+                <a href="#Multimedia">Multimedia</a>
+              </li>
+              <li>
+                <a href="#Noticia">Noticia</a>
+              </li>
+              <li>
+                <a href="#Obra">Obra</a>
+              </li>
+              <li>
+                <a href="#Reporte">Reporte</a>
+              </li>
+              <li>
+                <a href="#Reserva">Reserva</a>
+              </li>
+              <li>
+                <a href="#Reservas">Reservas</a>
+              </li>
+              <li>
+                <a href="#Usuario">Usuario</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="container">
+      <div class="row">
+        <div class="column">
+          <div class="section">
+            <div class="section-header">
+              <div class="section-title">
+                <a name="Actor" class="section-toggle">Actor</a>
+              </div>
+
+              <div class="actions">
+                <a class="section-toggle">Show/hide</a>
+                <a class="hide-description">List Operations</a>
+                <a class="show-description">Expand Operations</a>
+              </div>
+            </div>
+
+            <div class="endpoints">
+              <div class="endpoint get">
+                <div class="address toggle-description">
+                  <span class="label">get</span><span class="url">/registro</span>
+                </div>
+
+                <div class="description hidden">
+                  <p>Vista Registro Actor</p>
+
+                </div>
+              </div>
+              <div class="endpoint get">
+                <div class="address toggle-description">
+                  <span class="label">get</span><span class="url">/agregarActor</span>
+                </div>
+
+                <div class="description hidden">
+                  <p>Vista Registro Actor</p>
+
+                </div>
+              </div>
+              <div class="endpoint post">
+                <div class="address toggle-description">
+                  <span class="label">post</span><span class="url">/registro/guardarActor</span>
+                </div>
+
+                <div class="description hidden">
+                  <p>Actualizar Actor</p>
+
+                </div>
+              </div>
+              <div class="endpoint get">
+                <div class="address toggle-description">
+                  <span class="label">get</span><span class="url">/verActores</span>
+                </div>
+
+                <div class="description hidden">
+                  <p>Vista todos los Actores</p>
+
+                </div>
+              </div>
+              <div class="endpoint post">
+                <div class="address toggle-description">
+                  <span class="label">post</span><span class="url">/actualizarActor</span>
+                </div>
+
+                <div class="description hidden">
+                  <p>Actualiza Actor</p>
+
+                </div>
+              </div>
+              <div class="endpoint get">
+                <div class="address toggle-description">
+                  <span class="label">get</span><span class="url">/editarActor/:externalX</span>
+                </div>
+
+                <div class="description hidden">
+                  <p>Vista Atualizar Actor</p>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="container">
+      <div class="row">
+        <div class="column">
+          <div class="section">
+            <div class="section-header">
+              <div class="section-title">
+                <a name="Correo" class="section-toggle">Correo</a>
+              </div>
+
+              <div class="actions">
+                <a class="section-toggle">Show/hide</a>
+                <a class="hide-description">List Operations</a>
+                <a class="show-description">Expand Operations</a>
+              </div>
+            </div>
+
+            <div class="endpoints">
+              <div class="endpoint post">
+                <div class="address toggle-description">
+                  <span class="label">post</span><span class="url">/enviarCorreo</span>
+                </div>
+
+                <div class="description hidden">
+                  <p>Envia Correo</p>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="container">
+      <div class="row">
+        <div class="column">
+          <div class="section">
+            <div class="section-header">
+              <div class="section-title">
+                <a name="Cuenta" class="section-toggle">Cuenta</a>
+              </div>
+
+              <div class="actions">
+                <a class="section-toggle">Show/hide</a>
+                <a class="hide-description">List Operations</a>
+                <a class="show-description">Expand Operations</a>
+              </div>
+            </div>
+
+            <div class="endpoints">
+              <div class="endpoint get">
+                <div class="address toggle-description">
+                  <span class="label">get</span><span class="url">/</span>
+                </div>
+
+                <div class="description hidden">
+                  <p>Muestra vista Principal</p>
+
+                </div>
+              </div>
+              <div class="endpoint get">
+                <div class="address toggle-description">
+                  <span class="label">get</span><span class="url">/inicioSesion</span>
+                </div>
+
+                <div class="description hidden">
+                  <p>Vista de Inicio de Sesion</p>
+
+                </div>
+              </div>
+              <div class="endpoint post">
+                <div class="address toggle-description">
+                  <span class="label">post</span><span class="url">/bajarCuenta</span>
+                </div>
+
+                <div class="description hidden">
+                  <p>Da de baja una Cuenta</p>
+
+                </div>
+              </div>
+              <div class="endpoint post">
+                <div class="address toggle-description">
+                  <span class="label">post</span><span class="url">/registro/guardar</span>
+                </div>
+
+                <div class="description hidden">
+                  <p>Registro Cuenta</p>
+
+                </div>
+              </div>
+              <div class="endpoint get">
+                <div class="address toggle-description">
+                  <span class="label">get</span><span class="url">/cerrar</span>
+                </div>
+
+                <div class="description hidden">
+                  <p>Cerrar Cuenta</p>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="container">
+      <div class="row">
+        <div class="column">
+          <div class="section">
+            <div class="section-header">
+              <div class="section-title">
+                <a name="Multimedia" class="section-toggle">Multimedia</a>
+              </div>
+
+              <div class="actions">
+                <a class="section-toggle">Show/hide</a>
+                <a class="hide-description">List Operations</a>
+                <a class="show-description">Expand Operations</a>
+              </div>
+            </div>
+
+            <div class="endpoints">
+              <div class="endpoint get">
+                <div class="address toggle-description">
+                  <span class="label">get</span><span class="url">/galeria</span>
+                </div>
+
+                <div class="description hidden">
+                  <p>Vista Galeria</p>
+
+                </div>
+              </div>
+              <div class="endpoint post">
+                <div class="address toggle-description">
+                  <span class="label">post</span><span class="url">/galeria/guardarMult</span>
+                </div>
+
+                <div class="description hidden">
+                  <p>Registro Multimedia</p>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="container">
+      <div class="row">
+        <div class="column">
+          <div class="section">
+            <div class="section-header">
+              <div class="section-title">
+                <a name="Noticia" class="section-toggle">Noticia</a>
+              </div>
+
+              <div class="actions">
+                <a class="section-toggle">Show/hide</a>
+                <a class="hide-description">List Operations</a>
+                <a class="show-description">Expand Operations</a>
+              </div>
+            </div>
+
+            <div class="endpoints">
+              <div class="endpoint get">
+                <div class="address toggle-description">
+                  <span class="label">get</span><span class="url">/agregarNoticia</span>
+                </div>
+
+                <div class="description hidden">
+                  <p>Vista Registro Noticias</p>
+
+                </div>
+              </div>
+              <div class="endpoint get">
+                <div class="address toggle-description">
+                  <span class="label">get</span><span class="url">/noticia</span>
+                </div>
+
+                <div class="description hidden">
+                  <p>Vista Noticias</p>
+
+                </div>
+              </div>
+              <div class="endpoint get">
+                <div class="address toggle-description">
+                  <span class="label">get</span><span class="url">/editarNoticia/:external</span>
+                </div>
+
+                <div class="description hidden">
+                  <p>Vista Actualiza Noticia</p>
+
+                </div>
+              </div>
+              <div class="endpoint post">
+                <div class="address toggle-description">
+                  <span class="label">post</span><span class="url">/registro/guardarNoticia</span>
+                </div>
+
+                <div class="description hidden">
+                  <p>Registro Noticia</p>
+
+                </div>
+              </div>
+              <div class="endpoint post">
+                <div class="address toggle-description">
+                  <span class="label">post</span><span class="url">/editarNoticia</span>
+                </div>
+
+                <div class="description hidden">
+                  <p>Actualiza Noticia</p>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="container">
+      <div class="row">
+        <div class="column">
+          <div class="section">
+            <div class="section-header">
+              <div class="section-title">
+                <a name="Obra" class="section-toggle">Obra</a>
+              </div>
+
+              <div class="actions">
+                <a class="section-toggle">Show/hide</a>
+                <a class="hide-description">List Operations</a>
+                <a class="show-description">Expand Operations</a>
+              </div>
+            </div>
+
+            <div class="endpoints">
+              <div class="endpoint get">
+                <div class="address toggle-description">
+                  <span class="label">get</span><span class="url">/agregarObra</span>
+                </div>
+
+                <div class="description hidden">
+                  <p>Vista Registro Obra</p>
+
+                </div>
+              </div>
+              <div class="endpoint get">
+                <div class="address toggle-description">
+                  <span class="label">get</span><span class="url">/obras</span>
+                </div>
+
+                <div class="description hidden">
+                  <p>Vista Obra</p>
+
+                </div>
+              </div>
+              <div class="endpoint get">
+                <div class="address toggle-description">
+                  <span class="label">get</span><span class="url">/editarObra/:external</span>
+                </div>
+
+                <div class="description hidden">
+                  <p>Vista Actualizar Obra</p>
+
+                </div>
+              </div>
+              <div class="endpoint post">
+                <div class="address toggle-description">
+                  <span class="label">post</span><span class="url">/registro/guardarObra</span>
+                </div>
+
+                <div class="description hidden">
+                  <p>Vista Registro Obra</p>
+
+                </div>
+              </div>
+              <div class="endpoint post">
+                <div class="address toggle-description">
+                  <span class="label">post</span><span class="url">/editarObra</span>
+                </div>
+
+                <div class="description hidden">
+                  <p>Actualiza Obra</p>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="container">
+      <div class="row">
+        <div class="column">
+          <div class="section">
+            <div class="section-header">
+              <div class="section-title">
+                <a name="Reporte" class="section-toggle">Reporte</a>
+              </div>
+
+              <div class="actions">
+                <a class="section-toggle">Show/hide</a>
+                <a class="hide-description">List Operations</a>
+                <a class="show-description">Expand Operations</a>
+              </div>
+            </div>
+
+            <div class="endpoints">
+              <div class="endpoint get">
+                <div class="address toggle-description">
+                  <span class="label">get</span><span class="url">/comprobantepdf/:external</span>
+                </div>
+
+                <div class="description hidden">
+                  <p>Genera Reporte Reserva</p>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="container">
+      <div class="row">
+        <div class="column">
+          <div class="section">
+            <div class="section-header">
+              <div class="section-title">
+                <a name="Reserva" class="section-toggle">Reserva</a>
+              </div>
+
+              <div class="actions">
+                <a class="section-toggle">Show/hide</a>
+                <a class="hide-description">List Operations</a>
+                <a class="show-description">Expand Operations</a>
+              </div>
+            </div>
+
+            <div class="endpoints">
+              <div class="endpoint get">
+                <div class="address toggle-description">
+                  <span class="label">get</span><span class="url">/RESERVAR</span>
+                </div>
+
+                <div class="description hidden">
+                  <p>Vista Registro Reserva</p>
+
+                </div>
+              </div>
+              <div class="endpoint post">
+                <div class="address toggle-description">
+                  <span class="label">post</span><span class="url">/registro/guardarReserva</span>
+                </div>
+
+                <div class="description hidden">
+                  <p>Registro Reserva</p>
+
+                </div>
+              </div>
+              <div class="endpoint post">
+                <div class="address toggle-description">
+                  <span class="label">post</span><span class="url">/registro/actualizarReserva</span>
+                </div>
+
+                <div class="description hidden">
+                  <p>Actualizar Reserva</p>
+
+                </div>
+              </div>
+              <div class="endpoint post">
+                <div class="address toggle-description">
+                  <span class="label">post</span><span class="url">//editEstado/:external</span>
+                </div>
+
+                <div class="description hidden">
+                  <p>Cambia estado Reserva</p>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="container">
+      <div class="row">
+        <div class="column">
+          <div class="section">
+            <div class="section-header">
+              <div class="section-title">
+                <a name="Reservas" class="section-toggle">Reservas</a>
+              </div>
+
+              <div class="actions">
+                <a class="section-toggle">Show/hide</a>
+                <a class="hide-description">List Operations</a>
+                <a class="show-description">Expand Operations</a>
+              </div>
+            </div>
+
+            <div class="endpoints">
+              <div class="endpoint get">
+                <div class="address toggle-description">
+                  <span class="label">get</span><span class="url">/MISRESERVAS</span>
+                </div>
+
+                <div class="description hidden">
+                  <p>Vista todas Reservas</p>
+
+                </div>
+              </div>
+              <div class="endpoint get">
+                <div class="address toggle-description">
+                  <span class="label">get</span><span class="url">/MISRESERVAS</span>
+                </div>
+
+                <div class="description hidden">
+                  <p>Vista todas Reservas</p>
+
+                </div>
+              </div>
+              <div class="endpoint get">
+                <div class="address toggle-description">
+                  <span class="label">get</span><span class="url">/editarReserva/:external</span>
+                </div>
+
+                <div class="description hidden">
+                  <p>Vista Actualizar Reservas</p>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="container">
+      <div class="row">
+        <div class="column">
+          <div class="section">
+            <div class="section-header">
+              <div class="section-title">
+                <a name="Usuario" class="section-toggle">Usuario</a>
+              </div>
+
+              <div class="actions">
+                <a class="section-toggle">Show/hide</a>
+                <a class="hide-description">List Operations</a>
+                <a class="show-description">Expand Operations</a>
+              </div>
+            </div>
+
+            <div class="endpoints">
+              <div class="endpoint post">
+                <div class="address toggle-description">
+                  <span class="label">post</span><span class="url">/inicioSesion/entrar</span>
+                </div>
+
+                <div class="description hidden">
+                  <p>Middleware Inicio de Sesion</p>
+
+                </div>
+              </div>
+              <div class="endpoint get">
+                <div class="address toggle-description">
+                  <span class="label">get</span><span class="url">/perfil</span>
+                </div>
+
+                <div class="description hidden">
+                  <p>Perfil del Usuario</p>
+
+                </div>
+              </div>
+              <div class="endpoint post">
+                <div class="address toggle-description">
+                  <span class="label">post</span><span class="url">/actualizarUsuarior</span>
+                </div>
+
+                <div class="description hidden">
+                  <p>Actualizar los Datos del usuario</p>
+
+                </div>
+              </div>
+              <div class="endpoint post">
+                <div class="address toggle-description">
+                  <span class="label">post</span><span class="url">/actualizarfotoUsuario</span>
+                </div>
+
+                <div class="description hidden">
+                  <p>Actualiza  foto de Perfil</p>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script type="text/javascript" src="api-doc-generator.min.js"></script>
+</body>
+</html>

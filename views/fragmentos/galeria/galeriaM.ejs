@@ -1,0 +1,43 @@
+<!-- Portfolio Section -->
+<div id="portfolio">
+    <div class="section-title text-center center">
+        <div class="overlay">
+            <h2>Galeria</h2>
+            <hr>
+            <p></p>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="categories">
+                <ul class="cat">
+                    <li>
+                        <ol class="type">
+                            <li><a href="#" data-filter="*" class="active">Todos</a></li>
+                            <li><a href="#" data-filter=".OBRA">Obra</a></li>
+                            <li><a href="#" data-filter=".NOTICIA">Noticia</a></li>
+                        </ol>
+                    </li>
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="portfolio-items">
+                <% images.forEach(function(img){ %>
+                <div class="col-sm-6 col-md-4 col-lg-4 <%- img.desc -%>">
+                    <div class="portfolio-item">
+                        <div class="hover-bg">
+                            <a href="<%- img.archivo -%>" title="<%- img.desc -%>" data-lightbox-gallery="gallery1">
+                                <div class="hover-text">
+                                    <h4><%- img.titulo -%></h4>
+                                </div>
+                                <img src="<%- img.archivo -%>" class="img-responsive" alt="Project Title"> </a>
+                        </div>
+                    </div>
+                </div>
+                <% }); %>
+            </div>
+        </div>
+    </div>
+</div>

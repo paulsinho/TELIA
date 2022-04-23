@@ -1,0 +1,108 @@
+<div class="limiter">
+    <div class="container-login100">
+        <div class="wrap-login100">
+            <form class="login100-form validate-form" id='fomr_Registro' method='POST' action='/editarNoticia'
+                enctype="multipart/form-data">
+                <input type="hidden" name="external" value="<%- not.external_id -%>" />
+                <input type="hidden" name="idNoticia" value="<%- not.idNoticia -%>" />
+                <input type="hidden" name="multActual" value="<%- not.multimedia -%>" />
+                <span class="login100-form-title p-b-43" style="padding-top: 7%">
+                    Editar Noticia
+                </span>
+                <% if( not.esVideo  == 1){ %>
+                <div class="fotoObra"><iframe width="400" height="315" src="<%= not.multimedia %>" frameborder="0"
+                        allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
+                <% } else{ %>
+                <div class="imgNot"
+                    style=' padding: 0px !important; background: url("/<%= not.multimedia %>");background-size:cover!important; background-position: center center'>
+                </div>
+                <% }  %>
+                
+                <div class="mt-10">
+                    <input type="text" name="titulo" placeholder="Titulo de la noticia" onfocus="this.placeholder = ''"
+                        onblur="this.placeholder = 'Titulo'" required class="single-input" value="<%= not.titulo %>">
+                </div>
+                <div class="input-group-icon mt-10">
+                    <div class="form-select" id="default-select">
+                        <select name="multimedia" id="tipoMult" onchange="OnChange()">
+                            <option class="in2" value="3">-- Tipo de Multimedia --</option>
+                            <option class="in2" value='1'>Video</option>
+                            <option class="in2" value='0'>Imagen</option>
+                        </select>
+                    </div>
+                </div>
+                <div id='video' style="display:none" class="mt-10">
+                    <input type="url" name="video" placeholder="URL" onfocus="this.placeholder = ''"
+                        onblur="this.placeholder = 'url'" class="single-input">
+                </div>
+
+                <div class="text-center" id="vistaPrevia" style="display:none">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/b/b2/Telefe_Noticias_2017.png"
+                        class="avatar img-circle img-thumbnail" alt="avatar">
+                    <br>
+                </div>
+
+                <div id='foto' style="display:none" class="text-center">
+                    <br>
+                    <label for="archivo" class="genric-btn primary small">
+                        <span>Agregar Foto</span>
+                        <input type="file" id="archivo" name="archivo" style="display:none"
+                            class="text-center center-block file-upload">
+                    </label>
+                </div>
+
+                <div class="mt-10">
+                    <textarea name="descripcion" rows="4" placeholder="Descripción" onfocus="this.placeholder = ''"
+                        onblur="this.placeholder = 'Descripción'" required class="single-input"><%= not.descripcion %></textarea>
+                </div>
+                <div class="container-login100-form-btn">
+                    <button class="login100-form-btn">
+                        Actualizar
+                    </button>
+                </div>
+            </form>
+            <div class="login100-more" style="background-image: url(../img/intro-noticia.jpg);">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+
+    function OnChange() {
+        var tipo = $('#tipoMult').val();
+        if (tipo == 1) {
+            console.log('video');
+            $('#foto').css("display", "none");
+            $('#vistaPrevia').css("display", "none");
+            $('#video').css("display", "block");
+        } else if (tipo == 0) {
+            $('#foto').css("display", "block");
+            $('#vistaPrevia').css("display", "block");
+            $('#video').css("display", "none");
+        } else {
+            $('#foto').css("display", "none");
+            $('#video').css("display", "none");
+            $('#vistaPrevia').css("display", "none");
+        }
+    }
+</script>
+<script>
+    $(document).ready(function () {
+        var readURL = function (input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('.avatar').attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+        $(".file-upload").on('change', function () {
+            readURL(this);
+        });
+    });
+</script>

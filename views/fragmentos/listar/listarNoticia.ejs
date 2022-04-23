@@ -1,0 +1,72 @@
+<div class="whole-wrap">
+    <div class="container">
+        <div class="section-top-border">
+            <div class="row">
+                <div class="col-lg-8 col-md-8">
+                    <h3 class="mb-30">Noticias</h3>
+                    <div class="progress-table-wrapy">
+                        <table class="table table-hover table-fixed">
+                            <!--Table head-->
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Titulo</th>
+                                    <th>Fecha</th>
+                                    <th>Accion</th>
+                                </tr>
+                            </thead>
+                            <!--Table head-->
+                            <!--Table body-->
+                            <tbody>
+                                <% lista.forEach(function(noticia,i){ %>
+                                <tr id="<%= i%>">
+                                    <th scope="row"><%- (i+1) -%></th>
+                                    <td><%= noticia.titulo %></td>
+                                    <td><%- noticia.DATE -%></td>
+                                    <% if( rol == 3){ %>
+                                    <td>
+                                        <a  href="/editarNoticia/<%= noticia.external_id %>" class="genric-btn link">Editar</a>
+                                    </td>
+                                    <% } else{ %>
+                                    <td>ver mas</td>
+                                    <% }  %>
+                                </tr>
+                                <script>
+                                    var html = '';
+                                    $('#<%= i%>').hover(function () {
+                                        html = '<h3 class="mb-30" id="nombreActor"></h3><div class="switch-wrap d-flex justify-content-between  text-center">';
+                                        if ('<%= noticia.esVideo %>' == '1') {
+                                            $('#padre').empty();
+                                            html += '<div class=""><iframe width="350" height="175" id="videoNoticia" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>';
+                                            html += '</div><div class="switch-wrap d-flex justify-content-between"><div class="col-lg-11 about-left" id="DatoX"></div></div>';
+                                            $('#padre').html(html);
+                                            $('#videoNoticia').attr('src', '<%= noticia.multimedia%>');
+                                        } else {
+                                            html += '<div class="section-ga" id="FotoX"></div></div><div class="switch-wrap d-flex justify-content-between"><div class="col-lg-11 about-left" id="DatoX"></div></div>';
+                                            $('#padre').empty();
+                                            $('#padre').html(html);
+                                            $('#FotoX').css('background-image', 'url(<%= noticia.multimedia%>)');
+                                            $('#FotoX').css('background-size', 'cover');
+                                            $('#FotoX').css('background-position', 'center center');
+                                        }
+                                        $('#DatoX').html('<p><%=noticia.descripcion %></p>');
+                                        $('#nombreActor').text('<%= noticia.titulo%>');
+                                    });
+                                </script>
+                                <% }); %>
+                            </tbody>
+                            <!--Table body-->
+
+                        </table>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-5 mt-sm-30" id="xx">
+                    <div id='padre' class="single-element-widget">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

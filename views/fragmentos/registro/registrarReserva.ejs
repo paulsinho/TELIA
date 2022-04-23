@@ -1,0 +1,74 @@
+<!-- Start Align Area -->
+<div class="whole-wrap">
+    <div class="container">
+        <div class="section-top-border">
+            <div class="row">
+                <div class="col-lg-6 col-md-6">
+                    <h3 class="mb-30">Reservar</h3>
+                    <form id='fomr_Registro' method='POST' action='/registro/guardarReserva'>
+                        <input hidden type="text" placeholder="cedula" name="fechahoy" id="fechahoy">
+                        <input hidden type="text" placeholder="cedula" name="fechaRetiro" id="fechaRetiro">
+                        <div class="mt-10">
+                            <input type="number" name="boletos" min="0" max="5" step="1" value="1"
+                                placeholder="Cantidad" onfocus="this.placeholder = ''"
+                                onblur="this.placeholder = 'Cantidad'" required class="single-input">
+                        </div>
+                    </form>
+                </div>
+                <div class="col-lg-6 col-md-6 mt-sm-30">
+                    <div class="single-element-widget">
+                        <h3 class="mb-30">Obras Disponibles!</h3>
+                        <section class="testimonial-area relative section-gap" id="testimonial">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="active-testimonial">
+                                        <% obras.forEach(function(obra){ %>
+                                        <div class="single-testimonial item d-flex flex-row">
+                                            <div class="thumb">
+                                                <img class="img-fluid" src="<%= obra.multimedia %>" alt="">
+                                            </div>
+                                            <div class="desc">
+                                                <p>
+                                                    <%= obra.desc %>
+                                                </p>
+                                                <h4 mt-30><%= obra.nombre %></h4>
+                                            </div>
+                                        </div>
+                                        <% }); %>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    var p = jQuery.noConflict();
+    p(document).ready(function () {
+        var fechaHoy = new Date();
+        var dias = 3;
+        p("#fechahoy").val(fechaHoy.getFullYear() + "-" + 0 + (fechaHoy.getMonth() + 1) + "-" + fechaHoy.getDate());
+        p("#fechaRetiro").val(fechaHoy.getFullYear() + "-" + 0 + (fechaHoy.getMonth() + 1) + "-" + (fechaHoy.getDate() + 3) * 1);
+    });
+</script>
+<script>
+
+    function calcular() {
+        //la fecha
+        var fechaHoy = new Date();
+
+        //dias a sumar
+        //        var dias = parseInt(numero.value);
+        var dias = 3;
+
+        //nueva fecha sumada
+        TuFfechaHoyecha.setDate(fechaHoy.getDate() + dias);
+        //formato de salida para la fecha
+
+        resultado.innerText = fechaHoy.getDate() + '/' +
+            (fechaHoy.getMonth() + 1) + '/' + fechaHoy.getFullYear();
+    }
+</script>

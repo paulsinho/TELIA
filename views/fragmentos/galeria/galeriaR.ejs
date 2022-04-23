@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="zxx" class="no-js">
+
+    <head>
+        <!-- Mobile Specific Meta -->
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <!-- Favicon-->
+        <link rel="shortcut icon" href="rolPrincipal/img/fav.png">
+        <!-- Author Meta -->
+        <meta name="author" content="codepixer">
+        <!-- Meta Description -->
+        <meta name="description" content="">
+        <!-- Meta Keyword -->
+        <meta name="keywords" content="">
+        <!-- meta character set -->
+        <meta charset="UTF-8">
+        <!-- Site Title -->
+        <title>
+            <%- titulo %>
+        </title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Dancing+Script:400,700" rel="stylesheet">
+        <!--
+                                CSS
+                                ============================================= -->
+        <link rel="stylesheet" href="../rolPrincipal/css/linearicons.css">
+        <link rel="stylesheet" href="../rolPrincipal/css/font-awesome.min.css">
+        <link rel="stylesheet" href="../rolPrincipal/css/bootstrap.css">
+        <link rel="stylesheet" href="../rolPrincipal/css/magnific-popup.css">
+        <link rel="stylesheet" href="../rolPrincipal/css/nice-select.css">
+        <link rel="stylesheet" href="../rolPrincipal/css/animate.min.css">
+        <link rel="stylesheet" href="../rolPrincipal/css/owl.carousel.css">
+        <link rel="stylesheet" href="../rolPrincipal/css/main.css">
+    </head>
+
+    <body>
+
+        <!-- HEADER NAV -->
+        <%- include(navRol) -%>
+        <!-- END HEADER NAV -->
+
+        <div class="whole-wrap">
+            <div class="container">
+
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h2 class="modal-title" id="exampleModalLongTitle">Ingresar Multimedia</h2>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form id="CreateForm" method='POST' action='/galeria/guardarMult' enctype="multipart/form-data">
+                                    <div class="text-center">
+                                        <img src="" class="avatar img-circle img-thumbnail" alt="avatar">
+                                        <input type="file" id="archivo" name="archivo"
+                                               class="text-center center-block file-upload foto">
+                                    </div>
+                                    <div class="mt-10">
+                                        <input type="text" name="titulo" placeholder="Titulo" 
+                                               onfocus="this.placeholder = ''" onblur="this.placeholder = 'Titulo'" required
+                                               class="single-input">
+                                    </div>
+                                    <div class="mt-10">
+                                        <textarea class="single-textarea" name="desc" placeholder="Descripcion"
+                                                  onfocus="this.placeholder = ''" onblur="this.placeholder = 'Descripcion'"
+                                                  required></textarea>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                <button type="submit" class="btn btn-primary" form="CreateForm">Guardar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="section-top-border">
+                    <% if( rol == 4){ %>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+                        Ingresar Multimedia
+                    </button>
+                    <% } %>
+                </div>
+                <div class="section-top-border">
+                    <h3>Galeria</h3>
+                    <div class="row gallery-item">
+                        <% images.forEach(function(img,i){ %>
+                        <span hidden><%- (cont=cont+1) -%></span>
+
+                        <% if( ban === 1 && cont === 4){ %>
+                        <span hidden><%- (cont=2) -%></span>
+                        <span hidden><%- (ban=0) -%></span>
+                        <% } %>
+
+                        <% if( ban === 0 && cont === 4){ %>
+                        <span hidden><%- (cont=1) -%></span>
+                        <span hidden><%- (ban=1) -%></span>
+                        <% } %>
+
+                        <% if( ban === 1){ %>
+                        <div class="col-md-4">
+                            <a href="../<%- img.archivo -%>" class="img-pop-up"><div class="single-gallery-image" style="background: url('../<%- img.archivo -%>');"></div></a>
+                        </div>
+                        <% } else {%>
+                        <div class="col-md-6">
+                            <a href="../<%- img.archivo -%>" class="img-pop-up"><div class="single-gallery-image" style="background: url('../<%- img.archivo -%>');"></div></a>
+                        </div>
+                        <% } %>
+                        <% }); %>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Script -->
+        <script>
+            $(document).ready(function () {
+                var readURL = function (input) {
+                    if (input.files && input.files[0]) {
+                        var reader = new FileReader();
+
+                        reader.onload = function (e) {
+                            $('.avatar').attr('src', e.target.result);
+                        }
+
+                        reader.readAsDataURL(input.files[0]);
+                    }
+                }
+                $(".file-upload").on('change', function () {
+                    readURL(this);
+                });
+                $('.foto').click(function () {
+                    $('.btnF').css("display", "block");
+                });
+
+                $('.btnF').click(function () {
+                    $('.btnF').css("display", "none");
+                });
+            });
+        </script>
+
+
+        <script src="rolPrincipal/js/vendor/jquery-2.2.4.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+                integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+        <script src="../rolPrincipal/js/vendor/bootstrap.min.js"></script>
+        <script type="text/javascript"
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"></script>
+        <!-- <script src="rolPrincipal/js/jquery.min.js"></script> -->
+        <script src="../rolPrincipal/js/easing.min.js"></script>
+        <script src="../rolPrincipal/js/hoverIntent.js"></script>
+        <script src="../rolPrincipal/js/superfish.min.js"></script>
+        <script src="../rolPrincipal/js/jquery.ajaxchimp.min.js"></script>
+        <script src="../rolPrincipal/js/jquery.magnific-popup.min.js"></script>
+        <script src="../rolPrincipal/js/owl.carousel.min.js"></script>
+        <script src="../rolPrincipal/js/jquery.sticky.js"></script>
+        <script src="../rolPrincipal/js/jquery.nice-select.min.js"></script>
+        <script src="../rolPrincipal/js/parallax.min.js"></script>
+        <script src="../rolPrincipal/js/mail-script.js"></script>
+        <script src="../rolPrincipal/js/main.js"></script>
+
+    </body>
+
+</html>

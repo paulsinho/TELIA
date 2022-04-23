@@ -1,0 +1,102 @@
+<!-- Start Align Area -->
+<div class="whole-wrap">
+    <div class="container">
+        <div class="section-top-border">
+            <div class="row">
+                <div class="col-lg-6 col-md-6">
+                    <h3 class="mb-30">Registro de Actor</h3>
+                    <form id='fomr_Registro' method='POST' action='/registro/guardarActor'>
+                        <div class="mt-10">
+                            <input type="text" name="cedula" placeholder="Cedula" onfocus="this.placeholder = ''"
+                                onblur="this.placeholder = 'Cedula'" required class="single-input">
+                        </div>
+                        <div class="mt-10">
+                            <input type="text" name="nombre" placeholder="Nombre" onfocus="this.placeholder = ''"
+                                onblur="this.placeholder = 'Nombre'" required class="single-input">
+                        </div>
+                        <div class="mt-10">
+                            <input type="text" name="apellido" placeholder="Apellido" onfocus="this.placeholder = ''"
+                                onblur="this.placeholder = 'Apellido'" required class="single-input">
+                        </div>
+                        <div class="input-group-icon mt-10">
+                            <div class="icon"><i class="fa fa-address-card-o" aria-hidden="true"></i></div>
+                            <div class="form-select" id="default-select"">
+                                <select name=" idRol" id="idRol">
+                                <option value=" 0">Rol</option>
+                                <option value="5">Actor</option>
+                                <option value="3">Asistente</option>
+                                <option value="4">Productor</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="mt-10">
+                            <span>Fecha de Nacimiento</span>
+                            <input type="date" name="fechaNac" placeholder="Fecha de Nacimiento"
+                                onfocus="this.placeholder = 'Fecha de Nacimiento'"
+                                onblur="this.placeholder = 'Fecha de Nacimiento'" required class="single-input"
+                                aria-describedby="fechaHelp">
+                        </div>
+                        <div class="input-group-icon mt-10">
+                            <div class="icon"><i class="fa fa-venus-mars" aria-hidden="true"></i></div>
+                            <div class="form-select" id="default-select"">
+                                <select name='exo'>
+                                    <option value=" 0">Genero</option>
+                                <option value="5">Masculino</option>
+                                <option value="3">Femenino</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="input-group-icon mt-10">
+                            <div class="icon"><i class="fa fa-thumb-tack" aria-hidden="true"></i></div>
+                            <input type="text" name="direccion" placeholder="Direccion" onfocus="this.placeholder = ''"
+                                onblur="this.placeholder = 'Direccion'" required class="single-input">
+                        </div>
+                        <div class="mt-10">
+                            <input type="email" name="correo" placeholder="Correo" onfocus="this.placeholder = ''"
+                                onblur="this.placeholder = 'Correo'" required class="single-input">
+                        </div>
+                        <div class="mt-10">
+                            <input type="password" name="clave" placeholder="Clave" onfocus="this.placeholder = ''"
+                                onblur="this.placeholder = 'Clave'" required class="single-input">
+                        </div>
+                        <div class="mt-10">
+                            <input type="text" name="telefono" placeholder="Telefono" onfocus="this.placeholder = ''"
+                                onblur="this.placeholder = 'Telefono'" required class="single-input">
+                        </div>
+                        <div class="mt-10">
+                            <button class="btn btn-outline-dark">Registrame</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="col-lg-6 col-md-6 mt-sm-30">
+                    <div class="single-element-widget">
+                        <h3 class="mb-30">Actores</h3>
+                        <section class="testimonial-area relative section-gap" id="testimonial">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="active-testimonial">
+                                        <% actores.forEach(function(actorT){ %>
+                                        <div class="single-testimonial item d-flex flex-row">
+                                            <div class="thumb">
+                                                <img style="height: 7em; width: 40em; border-radius: 8px;"
+                                                    class="img-fluid" src="<%= actorT.foto %>" alt="">
+                                            </div>
+                                            <div class="desc">
+                                                <h4 mt-30><%= actorT.nombre %></h4>
+                                                <a href="/editarActor/<%= actorT.external_id %>"
+                                                    class="genric-btn info-border circle arrow small">Editar<span
+                                                        class="lnr lnr-arrow-right"></span></a>
+                                            </div>
+                                        </div>
+                                        <% }); %>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

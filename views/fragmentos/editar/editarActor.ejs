@@ -1,0 +1,66 @@
+<script>
+    $(document).ready(function () {
+        $("#<%= persona.genero%>").attr('selected', 'true')
+    });
+
+</script>
+
+<div class="whole-wrap">
+    <div class="container">
+        <div class="section-top-border">
+            <div class="row">
+                <div class="col-lg-6 col-md-6">
+                    <h3 class="mb-30">Actualizar Actor</h3>
+                    <form id='fomr_Registro' method='POST' action='/actualizarActor'>
+                        <div class="mt-10">
+                            <input type="text" name="cedula" value="<%= persona.cedula%>" placeholder="Cedula"
+                                onfocus="this.placeholder = ''" onblur="this.placeholder = 'Cedula'" required
+                                class="single-input">
+                        </div>
+                        <input type="hidden" name="external" value="<%= persona.external_id%>" />
+                        <div class="mt-10">
+                            <input type="text" name="nombre" value="<%= persona.nombre%>" placeholder="Nombre"
+                                onfocus="this.placeholder = ''" onblur="this.placeholder = 'Nombre'" required
+                                class="single-input">
+                        </div>
+                        <div class="mt-10">
+                            <input type="text" name="apellido" value="<%= persona.apellido%>" placeholder="Apellido"
+                                onfocus="this.placeholder = ''" onblur="this.placeholder = 'Apellido'" required
+                                class="single-input">
+                        </div>
+
+                        <div class="mt-10">
+                            <span>Fecha de Nacimiento</span>
+                            <input type="date" name="fechaNac" placeholder="Fecha de Nacimiento"
+                                value="<%= persona.fecha_Nac%>" onfocus="this.placeholder = 'Fecha de Nacimiento'"
+                                onblur="this.placeholder = 'Fecha de Nacimiento'" required class="single-input"
+                                aria-describedby="fechaHelp">
+                        </div>
+
+                        <div class="input-group-icon mt-10">
+                            <div class="icon"><i class="fa fa-thumb-tack" aria-hidden="true"></i></div>
+                            <input type="text" name="direccion" value="<%= persona.direccion%>" placeholder="Direccion"
+                                onfocus="this.placeholder = ''" onblur="this.placeholder = 'Direccion'" required
+                                class="single-input">
+                        </div>
+                        <div class="mt-10">
+                            <input type="text" name="telefono" value="<%= persona.telefono%>" placeholder="Telefono"
+                                onfocus="this.placeholder = ''" onblur="this.placeholder = 'Telefono'" required
+                                class="single-input">
+                        </div>
+                        <div class="mt-10">
+                            <button class="btn btn-outline-dark">Actualizar</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-lg-6 col-md-6 mt-sm-30">
+                    <div class="single-element-widget">
+                        <h3 class="mb-30">Actores</h3>
+                        <section class="section-ge text-center" id="testimonial" style="background-image: url('/<%= persona.foto %>'); background-size:cover; background-position: center center ">
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

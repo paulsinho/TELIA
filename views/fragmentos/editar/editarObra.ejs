@@ -1,0 +1,172 @@
+<div class="limiter">
+    <div class="container-login100 ">
+        <div class="wrap-login100 ">
+            <div class="login100-more col-lg-6 col-md-6" style="background-image: url(../img/intro-obra.jpg);">
+            </div>
+            <form class=" login100-form  col-lg-6 col-md-6" id='fomr_Registro' method='POST' action='/editarObra'
+                enctype="multipart/form-data">
+                <input type="hidden" name="external" value="<%=obra.external_id %>" />
+                <input type="hidden" name="multActual" value="<%=obra.multimedia %>" />
+                <input type="hidden" name="idObra" value="<%=obra.idObra %>" />
+                <h3 class="mb-30">Editar Obra</h3>
+                <% if( obra.esVideo ){ %>
+                <h1><%= obra.multimedia %></h1>
+                <div class="fotoObra mt-10"><iframe width="400" height="315" src="<%= obra.multimedia %>"
+                        frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
+                <% } else{ %>
+                <div class="col-md-4 text-center">
+                    <img src="/<%=obra.multimedia %>" alt="" class="img-fluid">
+                </div>
+                <% }  %>
+                <div class="mt-10">
+                    <input type="text" name="nombre" value="<%= obra.nombre %>" placeholder="Nombre de la obra"
+                        onfocus="this.placeholder = ''" onblur="this.placeholder = 'Nombre de la Obra'" required
+                        class="single-input">
+                </div>
+                <div class="input-group-icon mt-10">
+                    <div class="form-select" id="default-select">
+                        <select name="multimedia" id="tipoMult" onchange="OnChange()">
+                            <option class="in2">-- Tipo de Multimedia --</option>
+                            <option class="in2" value='1'>Video</option>
+                            <option class="in2" value='0'>Imagen</option>
+                        </select>
+                    </div>
+                </div>
+                <div id='video' style="display:none" class="mt-10">
+                    <input type="url" name="video" placeholder="URL" onfocus="this.placeholder = ''"
+                        onblur="this.placeholder = 'url'" class="single-input">
+                </div>
+
+                <div class="text-center" id="vistaPrevia" style="display:none">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/0/0a/Teatro.svg"
+                        class="avatar img-circle img-thumbnail" alt="avatar">
+                    <br>
+                </div>
+
+                <div id='foto' style="display:none" class="text-center">
+                    <br>
+                    <label for="archivo" class="genric-btn primary small">
+                        <span>Agregar Foto</span>
+                        <input type="file" id="archivo" name="archivo" style="display:none"
+                            class="text-center center-block file-upload">
+                    </label>
+                </div>
+
+                <div class="mt-10">
+                    <input type="text" name="autor" value="<%= obra.autor %>" placeholder="Autor"
+                        onfocus="this.placeholder = ''" onblur="this.placeholder = 'Autor'" required
+                        class="single-input">
+                </div>
+
+                <div class="mt-10">
+                    <span>Fecha de Estreno</span>
+                    <br>
+                    <input type="date" name="fecha" value="<%= obra.fechaEstreno %>" placeholder="Fecha de Nacimiento"
+                        onfocus="this.placeholder = 'Fecha de Nacimiento'"
+                        onblur="this.placeholder = 'Fecha de Nacimiento'" required class="single-input">
+                </div>
+
+                <div class="mt-10">
+                    <span>Hora</span>
+                    <br>
+                    <input type="time" name="hora" value="<%= obra.horaEstreno %>" class="single-input"
+                        aria-describedby="horaHelp" placeholder="Ingrese la hora" required>
+                </div>
+
+                <div class="mt-10">
+                    <input type="text" name="lugar" value="<%= obra.lugarEstreno %>" placeholder="Lugar de estreno"
+                        onfocus="this.placeholder = ''" onblur="this.placeholder = 'Lugar de estreno'" required
+                        class="single-input">
+                </div>
+
+                <div class="mt-10">
+                    <input type="text" name="precio" value="<%= obra.precioBoleto %>" placeholder="Precio del boleto"
+                        onfocus="this.placeholder = ''" onblur="this.placeholder = 'Precio del bolet'" required
+                        class="single-input">
+                </div>
+                <div class="input-group-icon mt-10">
+                    <div class="form-select" id="default-select">
+                        <select name="genero" id="genero" onchange="OnChange()">
+                            <option class="in2" value='SinGenero'>-- Genero --</option>
+                            <option class="in2" value='Tragedia'>Tragedia</option>
+                            <option class="in2" value='Comedia'>Comedia</option>
+                            <option class="in2" value='Drama'>Drama</option>
+                            <option class="in2" value='Tragicomedia'>Tragicomedia</option>
+                            <option class="in2" value='Monologo'>Monologo</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="mt-10">
+                    <textarea name="descripcion" rows="4" placeholder="Descripción" onfocus="this.placeholder = ''"
+                        onblur="this.placeholder = 'Descripción'" required
+                        class="single-input"><%= obra.desc %></textarea>
+                </div>
+                <br>
+                <div class="container-login100-form-btn">
+                    <button class="login100-form-btn">
+                        Actualizar
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<script>
+
+    function OnChange() {
+        var tipo = $('#tipoMult').val();
+        if (tipo == 1) {
+            console.log('video');
+            $('#foto').css("display", "none");
+            $('#vistaPrevia').css("display", "none");
+            $('#video').css("display", "block");
+        } else if (tipo == 0) {
+            $('#foto').css("display", "block");
+            $('#vistaPrevia').css("display", "block");
+            $('#video').css("display", "none");
+        } else {
+            $('#foto').css("display", "none");
+            $('#video').css("display", "none");
+            $('#vistaPrevia').css("display", "none");
+        }
+    }
+
+</script>
+<script>
+    $(document).ready(function () {
+        if ('<%= obra.esVideo %>' == '1') {
+            $('#padre').empty();
+            html += '<div class=""><iframe width="350" height="175" id="videoNoticia" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>';
+            html += '</div><div class="switch-wrap d-flex justify-content-between"><div class="col-lg-11 about-left" id="DatoX"></div></div>';
+            $('#padre').html(html);
+            $('#videoNoticia').attr('src', '<%= obra.multimedia%>');
+        } else {
+            html += '<div class="section-ga" id="FotoX"></div></div><div class="switch-wrap d-flex justify-content-between"><div class="col-lg-11 about-left" id="DatoX"></div></div>';
+            $('#padre').empty();
+            $('#padre').html(html);
+            $('#FotoX').css('background-image', 'url(<%= obra.multimedia%>)');
+            $('#FotoX').css('background-size', 'cover');
+            $('#FotoX').css('background-position', 'center center');
+        }
+    });
+</script>
+<script>
+    $(document).ready(function () {
+        var readURL = function (input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('.avatar').attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+        $(".file-upload").on('change', function () {
+            readURL(this);
+        });
+    });
+</script>
